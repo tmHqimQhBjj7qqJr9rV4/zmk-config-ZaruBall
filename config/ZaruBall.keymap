@@ -289,19 +289,14 @@
     combos {
         compatible = "zmk,combos";
 
-        toMOUSE_LAYER-1 {
-            bindings = <&mo 1>;
-            key-positions = <68 73>;
-        };
-
-        toMOUSE_LAYER-2 {
-            bindings = <&mo 1>;
-            key-positions = <73 76>;
-        };
-
         toADJUST_LAYER {
             bindings = <&mo 4>;
             key-positions = <70 73>;
+        };
+
+        toMOUSE_LAYER {
+            bindings = <&mo 1>;
+            key-positions = <71 73>;
         };
     };
 
