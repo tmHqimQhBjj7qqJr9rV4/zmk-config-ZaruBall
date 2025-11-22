@@ -296,7 +296,7 @@
 
         toMOUSE_LAYER {
             bindings = <&mo 1>;
-            key-positions = <71 73>;
+            key-positions = <73 68>;
         };
     };
 
