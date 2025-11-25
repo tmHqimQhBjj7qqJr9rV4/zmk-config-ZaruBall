@@ -210,6 +210,17 @@
             keep-mods = <(MOD_LALT | MOD_RALT)>;
         };
 
+        // Win + ノブ回転 → Win+Ctrl+→ / Win+Ctrl+←
+        enc_cw_gui: encoder-cw-gui {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            // 通常: enc_cw_alt（スクロール / Ctrl+PgUp / Alt+Tab）
+            // Win 押しながら: Win+Ctrl+→
+            bindings = <&enc_cw_alt>, <&kp LG(LC(RIGHT))>;
+            mods = <(MOD_LGUI | MOD_RGUI)>;
+            keep-mods = <(MOD_LGUI | MOD_RGUI)>;
+        };
+
         // 負方向（CCW: 下方向）の処理チェーン
         // Ctrl + ノブ回転 → Ctrl+PageDown
 
@@ -240,16 +251,24 @@
             keep-mods = <(MOD_LALT | MOD_RALT)>;
         };
 
-        // エンコーダ本体に割り当てる behavior-sensor-rotate
+        // Win + ノブ回転 → Win+Ctrl+←
+        enc_ccw_gui: encoder-ccw-gui {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            // 通常: enc_ccw_alt（スクロール / Ctrl+PgDn / Alt+Shift+Tab）
+            // Win 押しながら: Win+Ctrl+←
+            bindings = <&enc_ccw_alt>, <&kp LG(LC(LEFT))>;
+            mods = <(MOD_LGUI | MOD_RGUI)>;
+            keep-mods = <(MOD_LGUI | MOD_RGUI)>;
+        };
 
+        // エンコーダ本体に割り当てる behavior-sensor-rotate　
         enc_scroll_pg_mod: encoder-scroll-pg-mod {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
 
-            // CCW（左回し）→ enc_ccw_alt,  CW（右回し）→ enc_cw_alt
-
-            bindings = <&enc_ccw_alt>, <&enc_cw_alt>;
-
+            // CCW（左回し）→ enc_ccw_gui,  CW（右回し）→ enc_cw_gui
+            bindings = <&enc_ccw_gui>,<&enc_cw_gui>;
             tap-ms = <20>;
         };
     };
